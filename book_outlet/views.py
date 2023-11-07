@@ -11,8 +11,8 @@ def index(request: HttpRequest) -> HttpResponse:
                   context={'books': books})
 
 
-def book_detail(request: HttpRequest, id: int) -> HttpResponse:
-    book = get_object_or_404(Book, pk=id)
+def book_detail(request: HttpRequest, slug: str) -> HttpResponse:
+    book = get_object_or_404(Book, slug=slug)
     context = {
         'title': book.title,
         'author': book.author,
