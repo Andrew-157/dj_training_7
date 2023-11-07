@@ -1,3 +1,11 @@
 from django.shortcuts import render
+from django.http import HttpRequest, HttpResponse
 
-# Create your views here.
+
+from .models import Book
+
+
+def index(request: HttpRequest) -> HttpResponse:
+    books = Book.objects.all()
+    return render(request, template_name='book_outlet/index.html',
+                  context={'books': books})
